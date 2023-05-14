@@ -49,6 +49,62 @@ body{
     transition: .2s;
 }
 
+ul{
+    width: 50%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+ul li{
+    list-style-type: none;
+    cursor: pointer;
+    color: #000;
+    font-size: 25px;
+    position: relative;
+    padding: 12px 8px 12px 44px;
+    text-align: left;
+}
+
+li{
+    background-color: #eee;
+}
+
+ul li:hover{
+    background-color: #bbb;
+}
+
+ul li.checked{
+    color: #fff;
+    background-color: #888;
+    text-decoration: line-through;
+}
+
+ul li.checked::before{
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-width: 0px 2px 2px 0px;
+    border-style: solid;
+    top: 10px;
+    left: 16px;
+    height: 15px;
+    width: 7px;
+    transform: rotate(45deg);;
+}
+
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7px 16px 4px 16px;
+    font-size: 35px;
+}
+
+.close:hover{
+    color: #fff;
+    background-color: #dc3545;
+}
+
 .btn{
     padding: 2px 12px;
     font-size: 25px;
@@ -62,4 +118,5 @@ body{
 
 .btn:hover{
    background-color: #bbb;
+   color: #000;
 }

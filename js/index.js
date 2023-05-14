@@ -26,6 +26,66 @@ inputContainer.appendChild(input);
 inputContainer.appendChild(button);
 root.appendChild(inputContainer);
 
+let ul = document.createElement('ul');
+ul.className = 'ulContainer';
+ul.id = 'myUL';
+
+let li = document.createElement('li');
+li.className = "checked"; 
+
+ul.appendChild(li);
+root.appendChild(ul);
+
+var myTodoList = document.getElementsByTagName('li');
+var i;
+for (i = 0; i < myTodoList.length; i++) {
+     var span = document.createElement('span');
+     var txt = document.createTextNode("\u00D7");
+     span.className = 'close';
+     span.appendChild(txt);
+     myTodoList[i].appendChild(span);
+}
+
+var close = document.getElementsByClassName('close');
+var i;
+for (i = 0; i < close.length; i++) {
+    close[i].onclick = (()=>{
+        var div = this.parentElement;
+        div.style.display = "none";
+    })
+}
+
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+
 function newElement(){
-    
+    var li = document.createElement('li');
+    var inputValue = document.getElementById('myInput').value;
+    var t = document.createTextNode(inputValue);
+    li.appendChild(t);
+    if(inputValue == ''){
+        alert('Please Enter Value');
+    }
+    else{
+        document.getElementById('myUL').appendChild(li);
+    }
+    document.getElementById('myInput').value = "";
+
+    let span = document.createElement('span');
+    let text = document.createTextNode("\u00D7");
+    span.className = 'close';
+    span.appendChild(text);
+    li.appendChild(span);
+
+    for (i = 0; i <= close.length; i++) {
+         close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.display = "none";
+         }
+    }
 }
