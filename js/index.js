@@ -41,8 +41,12 @@ var i;
 for (i = 0; i < myTodoList.length; i++) {
      var span = document.createElement('span');
      var txt = document.createTextNode("\u00D7");
+     var edit = document.createElement('button');
+     edit.className = 'edit';
+     edit.innerText =  "Edit";
      span.className = 'close';
      span.appendChild(txt);
+     myTodoList[i].appendChild(edit);
      myTodoList[i].appendChild(span);
 }
 
@@ -62,7 +66,6 @@ list.addEventListener('click', function(ev) {
   }
 }, false);
 
-
 function newElement(){
     var li = document.createElement('li');
     var inputValue = document.getElementById('myInput').value;
@@ -78,14 +81,32 @@ function newElement(){
 
     let span = document.createElement('span');
     let text = document.createTextNode("\u00D7");
+    let edit = document.createElement('button');
+    edit.className = 'edit';
+    edit.innerText =  "Edit";
     span.className = 'close';
     span.appendChild(text);
+    li.appendChild(edit);
     li.appendChild(span);
 
-    for (i = 0; i <= close.length; i++) {
+    for (i = 0; i < close.length; i++) {
          close[i].onclick = function(){
             var div = this.parentElement;
             div.style.display = "none";
          }
     }
+
+    const editBtn = document.querySelectorAll(".edit");
+    editBtn.forEach(element => {
+    element.addEventListener('click' , editItem);
+    });
+
+    function editItem(event){
+    const listItem = event.target.parentNode;
+    const itemText = listItem.firstChild;
+    const newItemText = prompt("Enter the Edit Value", itemText.textContent);
+    if(newItemText !== null){
+    itemText.textContent = newItemText;
+    }
+  }
 }
